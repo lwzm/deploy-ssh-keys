@@ -1,0 +1,5 @@
+Edit your hosts.yaml and keys.yaml, and run
+
+./generate.py
+
+You know it.
