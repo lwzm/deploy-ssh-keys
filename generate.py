@@ -4,8 +4,11 @@ import yaml
 
 
 tpl = (
-    "ssh {host} "
-    "'cd ~{user} && echo ~{user}/.ssh; ( mkdir -p .ssh && chmod 700 .ssh && chown {user}:{user} .ssh &&  cat >>.ssh/authorized_keys)' <<EOF"
+    r"""ssh {host} """
+    r"""'"""
+    r"""cd ~{user} && mkdir -p .ssh && cat >.ssh/authorized_keys && chown -R {user}:{user} .ssh && chmod -R go-rwx .ssh"""
+    r"""'"""
+    r""" <<EOF"""
 ).format
 
 keys = yaml.safe_load(open('keys.yaml'))
