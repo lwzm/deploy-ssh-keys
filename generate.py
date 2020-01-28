@@ -10,7 +10,8 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDHWrD5V10X9SWTYnfIGQcglQmjiCK6KyMDKyTgwb3V
 tpl = (
     r"""ssh {host} """
     r"""'"""
-    r"""cd ~{user} && mkdir -p .ssh && cat >.ssh/authorized_keys && chown -R {user}:{user} .ssh && chmod -R go-rwx .ssh"""
+    r"""cd ~{user} && mkdir -p .ssh && cat >.ssh/authorized_keys """
+    r"""&& chown {user} . && chmod 755 . && chown -R {user} .ssh && chmod -R go-rwx .ssh"""
     r"""'"""
     r""" <<EOF"""
 ).format
